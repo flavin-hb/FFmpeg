@@ -48,7 +48,7 @@
 #endif
 
 static atomic_int cpu_flags = ATOMIC_VAR_INIT(-1);
-
+static atomic_int cpu_count = ATOMIC_VAR_INIT(-1);
 static int get_cpu_flags(void)
 {
     if (ARCH_MIPS)
