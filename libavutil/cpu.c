@@ -313,7 +313,10 @@ int av_cpu_count(void)
 
     return nb_cpus;
 }
-
+void av_cpu_force_count(int count)
+{
+    atomic_store_explicit(&cpu_count, count, memory_order_relaxed);
+}
 size_t av_cpu_max_align(void)
 {
     if (ARCH_MIPS)
