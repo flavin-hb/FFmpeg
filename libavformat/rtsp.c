@@ -1354,7 +1354,7 @@ static int rtsp_send_cmd_with_content_async(AVFormatContext *s,
         av_strlcat(buf, headers, sizeof(buf));
     av_strlcatf(buf, sizeof(buf), "CSeq: %d\r\n", rt->seq);
     av_strlcatf(buf, sizeof(buf), "User-Agent: %s\r\n",  rt->user_agent);
-    av_strlcatf(buf, sizeof(buf), "Scale: %s\r\n",  rt->scale);
+    av_strlcatf(buf, sizeof(buf), "Scale: %d\r\n",  rt->scale);
     if (rt->session_id[0] != '\0' && (!headers ||
         !strstr(headers, "\nIf-Match:"))) {
         av_strlcatf(buf, sizeof(buf), "Session: %s\r\n", rt->session_id);
