@@ -97,7 +97,7 @@ const AVOption ff_rtsp_options[] = {
     { "timeout", "set timeout (in microseconds) of socket I/O operations", OFFSET(stimeout), AV_OPT_TYPE_INT64, {.i64 = 0}, INT_MIN, INT64_MAX, DEC },
     COMMON_OPTS(),
      { "scale", "override scale header", OFFSET(scale), AV_OPT_TYPE_INT64, {.i64 = 0}, INT_MIN, INT64_MAX, DEC },
-     { "custheader", "custom  header", OFFSET(custheader), AV_OPT_TYPE_STRING, {.str = NULL}, 0, 0, DEC },
+     { "cust_header", "custom  header", OFFSET(cust_header), AV_OPT_TYPE_STRING, {.str = NULL}, 0, 0, DEC },
     { "user_agent", "override User-Agent header", OFFSET(user_agent), AV_OPT_TYPE_STRING, {.str = LIBAVFORMAT_IDENT}, 0, 0, DEC },
     { NULL },
 };
@@ -1358,9 +1358,7 @@ static int rtsp_send_cmd_with_content_async(AVFormatContext *s,
     if(rt->scale != 0){
         av_strlcatf(buf, sizeof(buf), "Scale: %d\r\n",  rt->scale);
     }
-    if(custheader){
-        av_strlcatf(buf, sizeof(buf), "%s\r\n",  rt->custheader);
-    }
+   av_strlcatf(buf, sizeof(buf), "%s\r\n",  rt->cust_header);
     if (rt->session_id[0] != '\0' && (!headers ||
         !strstr(headers, "\nIf-Match:"))) {
         av_strlcatf(buf, sizeof(buf), "Session: %s\r\n", rt->session_id);

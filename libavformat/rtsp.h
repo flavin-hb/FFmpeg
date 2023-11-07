@@ -415,7 +415,10 @@ typedef struct RTSPState {
      * User-Agent string
      */
     char *user_agent;
-    char *custheader;
+       /**
+         * cust_header  string
+         */
+    char *cust_header;
     int scale;
     char default_lang[4];
     int buffer_size;
