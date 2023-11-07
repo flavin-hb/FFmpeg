@@ -1358,7 +1358,7 @@ static int rtsp_send_cmd_with_content_async(AVFormatContext *s,
     if(rt->scale != 0){
         av_strlcatf(buf, sizeof(buf), "Scale: %d\r\n",  rt->scale);
     }
-    if(!custom_header && rt->custom_header !='\0' && strlen(custom_header) > 0){
+    if(!custom_header){
         av_strlcatf(buf, sizeof(buf), "%s\r\n",  rt->custom_header);
     }
     if (rt->session_id[0] != '\0' && (!headers ||
